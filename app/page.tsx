@@ -3,14 +3,21 @@
 import Image from "next/image";
 import { useState } from "react";
 
-function Heading({ tag, multiplier, fontSize }: { tag: string, multiplier: number, fontSize: number }) {
+interface HeadingProps {
+  tag: keyof JSX.IntrinsicElements; // Ensures tag is a valid JSX element string
+  multiplier: number;
+  fontSize: number;
+  children?: React.ReactNode; // Allows any valid React node(s)
+}
+
+function Heading({ tag, multiplier, fontSize, children }: HeadingProps) {
   const goldenRatio = 1.61803399;
-  const Tag = tag;
+  const Tag = tag as keyof JSX.IntrinsicElements; // Ensure tag is treated as a JSX element
   const size = fontSize * Math.pow(goldenRatio, multiplier);
 
   return (
     <Tag style={{ fontSize: `${size}px` }}>
-      {`<${tag}> ${size.toFixed(2)}px`}
+      {children}
     </Tag>
   );
 }
@@ -28,14 +35,14 @@ export default function Home() {
       </header>
       <div className="left-side"></div>
       <main>
-        {['h1', 'h2', 'h3'].map((tag, index) => (
+        {['h1', 'h2', 'h3'].map((tag: string, index) => (
             <Heading
               key={tag}
-              tag={tag}
+              tag={tag as keyof JSX.IntrinsicElements}
               multiplier={3 - index}
               fontSize={fontSize}
             />
-          ))}
+        ))}
           <p style={{ fontSize: `${fontSize}px` }}>
           {`<p> ${fontSize}px`}</p>
           <input
