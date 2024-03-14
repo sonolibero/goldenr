@@ -41,7 +41,9 @@ export default function Home() {
               tag={tag as keyof JSX.IntrinsicElements}
               multiplier={3 - index}
               fontSize={fontSize}
-            />
+            >
+              {`<${tag}> ${Number(fontSize * Math.pow(1.61803399, 3 - index)).toFixed(2)}px`}
+            </Heading>
         ))}
           <p style={{ fontSize: `${fontSize}px` }}>
           {`<p> ${fontSize}px`}</p>
