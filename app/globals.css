@@ -7,6 +7,7 @@ body {
   background: #000000;
   display: grid;
   grid-template: auto 1fr auto / auto 1fr auto;
+  max-width: 100%;
 }
 
 header {

@@ -8,7 +8,7 @@ function Heading({ tag, multiplier, fontSize }) {
   const size = fontSize * Math.pow(goldenRatio, multiplier);
 
   return (
-    <Tag style={{ fontSize: `${size}px` }}>
+    <Tag style={{ fontSize: `${size}px`, lineHeight: `${size}px` }}>
       {`<${tag}> ${size.toFixed(2)}px`}
     </Tag>
   );
